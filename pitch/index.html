@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AfterOwn Strategic Pitch</title>
+<meta name="description" content="AfterOwn strategic pitch presentation">
+
+<style>
+:root {
+  --navy:#0c1628;
+  --navy2:#13233d;
+  --cyan:#2dc9d3;
+  --blue:#2f6fed;
+  --white:#ffffff;
+  --mid:#cdd9e7;
+  --green:#21966e;
+}
+
+* { box-sizing:border-box; }
+
+html,body {
+  margin:0;
+  padding:0;
+  background:var(--navy);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--white);
+}
+
+body { overflow:hidden; }
+
+.deck {
+  height:100vh;
+  position:relative;
+}
+
+.slide {
+  display:none;
+  height:100vh;
+  width:100vw;
+  background:
+    radial-gradient(circle at 82% 12%,rgba(45,201,211,.15),transparent 26%),
+    linear-gradient(135deg,var(--navy),var(--navy2));
+}
+
+.slide.active { display:block; }
+
+.inner {
+  width:min(1180px,90vw);
+  height:100%;
+  margin:auto;
+  padding:7vh 0 10vh;
+  position:relative;
+}
+
+.kicker {
+  font-weight:800;
+  letter-spacing:.16em;
+  font-size:13px;
+  color:var(--cyan);
+  text-transform:uppercase;
+}
+
+h1 {
+  font-size:clamp(38px,5.2vw,72px);
+  line-height:1.02;
+  max-width:1000px;
+  margin:18px 0 22px;
+  letter-spacing:-.04em;
+}
+
+.lead {
+  font-size:clamp(18px,2vw,25px);
+  max-width:980px;
+  color:var(--mid);
+  line-height:1.45;
+}
+
+.grid {
+  display:grid;
+  gap:18px;
+  margin-top:42px;
+}
+
+.cards {
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+}
+
+.cols {
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+}
+
+.card {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  padding:25px;
+}
+
+.card h3 {
+  font-size:22px;
+  margin:0 0 10px;
+  color:var(--cyan);
+}
+
+.card p,.card li {
+  color:#d5deea;
+  font-size:16px;
+  line-height:1.45;
+}
+
+.card ul {
+  padding-left:20px;
+  margin:12px 0;
+}
+
+.steps {
+  display:grid;
+  gap:14px;
+  margin-top:36px;
+}
+
+.step {
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:16px;
+  align-items:start;
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.num {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--cyan);
+  color:var(--navy);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.step h3 {
+  margin:0 0 4px;
+  font-size:19px;
+}
+
+.step p {
+  margin:0;
+  color:#d5deea;
+  font-size:16px;
+}
+
+.metrics {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:52px;
+}
+
+.metric {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+}
+
+.value {
+  font-size:42px;
+  font-weight:900;
+  color:var(--cyan);
+}
+
+.label {
+  color:#d5deea;
+  margin-top:8px;
+}
+
+.tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:42px;
+}
+
+.tags span {
+  padding:13px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:700;
+}
+
+.foot {
+  position:absolute;
+  bottom:7vh;
+  left:0;
+  right:0;
+  color:#cfd9e6;
+  font-size:16px;
+  font-weight:600;
+}
+
+.controls {
+  position:fixed;
+  bottom:20px;
+  right:22px;
+  display:flex;
+  gap:10px;
+  z-index:10;
+}
+
+button {
+  border:0;
+  border-radius:999px;
+  padding:11px 16px;
+  background:#fff;
+  color:var(--navy);
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+
+.progress {
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:4px;
+  background:rgba(255,255,255,.12);
+  z-index:12;
+}
+
+.progress > div {
+  height:100%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  width:0;
+}
+
+.wordmark {
+  position:fixed;
+  top:20px;
+  right:24px;
+  z-index:20;
+  font-weight:900;
+  font-size:24px;
+  color:var(--cyan);
+}
+
+.counter {
+  position:fixed;
+  bottom:24px;
+  left:22px;
+  color:#cdd9e7;
+  font-size:13px;
+  z-index:11;
+}
+
+.cta {
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 22px;
+  border-radius:999px;
+  background:var(--green);
+  font-weight:900;
+}
+
+@media(max-width:760px) {
+  body { overflow:auto; }
+
+  .deck { height:auto; }
+
+  .slide {
+    min-height:100vh;
+    height:auto;
+    padding-bottom:80px;
+  }
+
+  .inner {
+    width:88vw;
+    padding-top:9vh;
+  }
+
+  .metrics {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .foot {
+    position:static;
+    margin-top:34px;
+  }
+
+  h1 { font-size:42px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wordmark">AfterOwn</div>
+
+<div class="deck">
+
+<!-- SLIDE 1 -->
+<section class="slide">
+<div class="inner">
+<div class="kicker">AFTEROWN</div>
+<h1>The market before the marketplace.</h1>
+<p class="lead">
+Predict likely future asset supply. Match it with buyer demand before a conventional listing exists.
+</p>
+<div class="cta">PRE-MVP • PILOT READY</div>
+<div class="foot">
+Strategic pitch | Alison McGregor, Founder
+</div>
+</div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+<div class="inner">
+<div class="kicker">PROBLEM</div>
+<h1>Resale starts too late.</h1>
+<p class="lead">
+Most marketplaces only see an asset after its owner has already decided to sell.
+</p>
+
+<div class="grid cards">
+
+<div class="card">
+<h3>01 — Decision</h3>
+<p>The owner decides an asset is surplus.</p>
+</div>
+
+<div class="card">
+<h3>02 — Listing</h3>
+<p>The asset is photographed, described and listed.</p>
+</div>
+
+<div class="card">
+<h3>03 — Demand</h3>
+<p>Only then does the market reveal buyer interest.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+<div class="inner">
+<div class="kicker">INSIGHT</div>
+<h1>What if demand appeared before the sale decision?</h1>
+
+<p class="lead">
+AfterOwn is designed to discover potential liquidity before an asset enters the resale market.
+</p>
+
+<div class="grid cards">
+
+<div class="card">
+<h3>Predict</h3>
+<p>Identify owner-approved assets that may become surplus within a future period.</p>
+</div>
+
+<div class="card">
+<h3>Match</h3>
+<p>Connect probable future supply with standing requirements from qualified buyers.</p>
+</div>
+
+<div class="card">
+<h3>Signal</h3>
+<p>Present conditional buyer interest before conventional listing.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">EXAMPLE</div>
+<h1>100 laptops. Six months early.</h1>
+
+<p class="lead">
+A simple enterprise technology validation scenario.
+</p>
+
+<div class="steps">
+
+<div class="step">
+<div class="num">1</div>
+<div>
+<h3>Enterprise refresh data</h3>
+<p>The owner indicates a likely replacement window.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="num">2</div>
+<div>
+<h3>Future supply signal</h3>
+<p>AfterOwn identifies approximately 100 devices that may become available.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="num">3</div>
+<div>
+<h3>Buyer requirement</h3>
+<p>A professional refurbisher wants that model and specification.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="num">4</div>
+<div>
+<h3>Conditional demand</h3>
+<p>The owner discovers potential demand before deciding whether to sell.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">PRODUCT</div>
+<h1>A private pre-market, not another classifieds site.</h1>
+
+<p class="lead">
+The owner stays in control while buyers gain earlier visibility into potential supply.
+</p>
+
+<div class="grid cols">
+
+<div class="card">
+<h3>Asset owners</h3>
+<ul>
+<li>Register assets or asset groups</li>
+<li>Set privacy and timing rules</li>
+<li>Receive conditional market signals</li>
+<li>Choose whether to transact</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>AfterOwn</h3>
+<ul>
+<li>Estimate future availability</li>
+<li>Structure asset attributes</li>
+<li>Match buyer requirements</li>
+<li>Measure price and interest signals</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Qualified buyers</h3>
+<ul>
+<li>Define standing demand</li>
+<li>Specify model, condition and timing</li>
+<li>Express conditional interest</li>
+<li>Prepare for future inventory</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">PILOT</div>
+<h1>Prove the mechanism before building the marketplace.</h1>
+
+<p class="lead">
+The first goal is evidence, not scale.
+</p>
+
+<div class="metrics">
+
+<div class="metric">
+<div class="value">100</div>
+<div class="label">assets</div>
+</div>
+
+<div class="metric">
+<div class="value">3–5</div>
+<div class="label">qualified buyers</div>
+</div>
+
+<div class="metric">
+<div class="value">30–90</div>
+<div class="label">day future window</div>
+</div>
+
+<div class="metric">
+<div class="value">4</div>
+<div class="label">core signals</div>
+</div>
+
+</div>
+
+<div class="foot">
+Measure buyer requirements • conditional offers • owner acceptance thresholds • time-to-liquidity
+</div>
+
+</div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">WHY NOW</div>
+
+<h1>Recommerce already has liquidity. AfterOwn targets timing.</h1>
+
+<p class="lead">
+Marketplaces, IT asset disposition providers, refurbishers and asset-lifecycle platforms already aggregate buyers, sellers and transaction data.
+</p>
+
+<div class="grid cols">
+
+<div class="card">
+<h3>Existing infrastructure</h3>
+<ul>
+<li>Marketplaces</li>
+<li>ITAD providers</li>
+<li>Refurbishers</li>
+<li>Asset lifecycle platforms</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>AfterOwn's wedge</h3>
+<ul>
+<li>Predict likely future supply</li>
+<li>Match demand earlier</li>
+<li>Create pre-listing market signals</li>
+<li>Move upstream of disposition</li>
+</ul>
+</div>
+
+</div>
+
+<div class="foot">
+Opportunity: become the predictive supply-discovery layer upstream of existing resale infrastructure.
+</div>
+
+</div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">BUSINESS MODEL</div>
+
+<h1>Multiple ways to monetize verified early demand.</h1>
+
+<div class="grid cards">
+
+<div class="card">
+<h3>Transaction fee</h3>
+<p>A fee on completed transactions originated through AfterOwn.</p>
+</div>
+
+<div class="card">
+<h3>Enterprise SaaS</h3>
+<p>Subscriptions for predictive asset-liquidity intelligence.</p>
+</div>
+
+<div class="card">
+<h3>Buyer access</h3>
+<p>Premium standing-demand and sourcing tools for professional buyers.</p>
+</div>
+
+<div class="card">
+<h3>Licensing / API</h3>
+<p>Embed predictive pre-market functionality into existing marketplaces and asset platforms.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">EXPANSION</div>
+
+<h1>Start narrow. Expand across depreciating assets.</h1>
+
+<p class="lead">
+The mechanism can potentially extend to categories where asset attributes, timing and buyer demand can be structured.
+</p>
+
+<div class="tags">
+<span>Enterprise IT</span>
+<span>Industrial equipment</span>
+<span>Hospitality equipment</span>
+<span>Laboratory assets</span>
+<span>Fleet & vehicles</span>
+<span>Robotics</span>
+<span>Office equipment</span>
+<span>Other durable assets</span>
+</div>
+
+</div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">CURRENT ASSETS</div>
+
+<h1>A concept package ready for validation and strategic development.</h1>
+
+<div class="tags">
+<span>Brand + visual identity</span>
+<span>Live landing page</span>
+<span>Product architecture</span>
+<span>Buyer / owner workflows</span>
+<span>100-asset pilot design</span>
+<span>Financial model</span>
+<span>Pitch + demo materials</span>
+<span>Commercialization strategy</span>
+<span>Preliminary competitor / prior-art research</span>
+</div>
+
+<div class="foot">
+Current stage: pre-MVP and pre-revenue. No production application or claimed customer traction.
+</div>
+
+</div>
+</section>
+
+<!-- SLIDE 11 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">STRATEGIC FIT</div>
+
+<h1>Built to complement companies that already own liquidity.</h1>
+
+<p class="lead">
+AfterOwn does not need to replace existing marketplaces. It can potentially make their supply visible sooner.
+</p>
+
+<div class="grid cards">
+
+<div class="card">
+<h3>Marketplaces</h3>
+<p>Earlier supply discovery.</p>
+</div>
+
+<div class="card">
+<h3>ITAD / Asset Lifecycle</h3>
+<p>Pre-disposition intelligence.</p>
+</div>
+
+<div class="card">
+<h3>Recommerce</h3>
+<p>Forward inventory visibility.</p>
+</div>
+
+<div class="card">
+<h3>OEM Recovery</h3>
+<p>Earlier refresh and takeback signals.</p>
+</div>
+
+<div class="card">
+<h3>Strategic Investors</h3>
+<p>A new marketplace-infrastructure thesis.</p>
+</div>
+
+<div class="card">
+<h3>Asset Monetization</h3>
+<p>Potential licensing or acquisition opportunity.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SLIDE 12 -->
+<section class="slide">
+<div class="inner">
+
+<div class="kicker">AFTEROWN</div>
+
+<h1>Help prove the market before the market.</h1>
+
+<p class="lead">
+Seeking a 100-asset pilot, strategic partnership, licensing, investment or acquisition discussion.
+</p>
+
+<div class="cta">LET'S TEST IT</div>
+
+<div class="foot">
+Alison McGregor | Founder, AfterOwn<br>
+alison.j.mcgregor@gmail.com<br>
+https://aiourway.github.io/Afterown/
+</div>
+
+</div>
+</section>
+
+</div>
+
+<div class="counter">
+<span id="current">1</span> / 12
+</div>
+
+<div class="controls">
+<button id="prev">← Prev</button>
+<button id="next">Next →</button>
+</div>
+
+<div class="progress">
+<div id="bar"></div>
+</div>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+let current = 0;
+
+function showSlide(number) {
+  current = (number + slides.length) % slides.length;
+
+  slides.forEach((slide,index) => {
+    slide.classList.toggle('active',index === current);
+  });
+
+  document.getElementById('current').textContent = current + 1;
+
+  document.getElementById('bar').style.width =
+    ((current + 1) / slides.length * 100) + '%';
+}
+
+document.getElementById('next').onclick = () => {
+  showSlide(current + 1);
+};
+
+document.getElementById('prev').onclick = () => {
+  showSlide(current - 1);
+};
+
+document.addEventListener('keydown', event => {
+
+  if (
+    event.key === 'ArrowRight' ||
+    event.key === 'PageDown' ||
+    event.key === ' '
+  ) {
+    showSlide(current + 1);
+  }
+
+  if (
+    event.key === 'ArrowLeft' ||
+    event.key === 'PageUp'
+  ) {
+    showSlide(current - 1);
+  }
+
+});
+
+showSlide(0);
+</script>
+
+</body>
+</html>
